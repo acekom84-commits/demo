@@ -326,6 +326,139 @@
     html{scroll-behavior:auto;}
     *{transition:none !important;}
   }
+
+/* ---------- PILULES HERO ---------- */
+  .info-pill{
+    position:absolute;top:14px;left:14px;z-index:50;
+    font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;letter-spacing:0.02em;
+    color:#fff;background:rgba(255,255,255,0.14);border:1.5px solid rgba(255,255,255,0.75);
+    border-radius:30px;padding:9px 16px;cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+    max-width:44vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .info-pill:hover{background:rgba(255,255,255,0.26);transform:translateY(-1px);}
+ 
+  /* ---------- PAGE INFOS ---------- */
+  .info-page{
+    position:fixed;inset:0;z-index:300;
+    background:var(--grey-bg);
+    display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  }
+  .info-page.show{display:block;}
+  body.locked{overflow:hidden;}
+ 
+  .info-topbar{
+    position:sticky;top:0;z-index:5;
+    background:var(--violet-deep);
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:13px 20px;
+  }
+  .info-topbar .brand{font-family:"Caveat",cursive;font-size:26px;color:#fff;line-height:1;}
+  .info-back{
+    font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;
+    color:#fff;background:rgba(255,255,255,0.16);border:1.5px solid rgba(255,255,255,0.6);
+    border-radius:30px;padding:8px 15px;cursor:pointer;white-space:nowrap;
+  }
+  .info-back:hover{background:rgba(255,255,255,0.3);}
+ 
+  .info-hero{background:linear-gradient(165deg,var(--violet),var(--violet-deep));color:#fff;padding:44px 0 40px;text-align:center;}
+  .info-hero h1{font-size:clamp(28px,6.5vw,44px);margin:0 0 14px;color:#fff;line-height:1.1;}
+  .info-hero p{max-width:560px;margin:0 auto;color:rgba(255,255,255,0.92);font-size:17px;}
+ 
+  .info-body{max-width:800px;margin:0 auto;padding:0 22px 70px;}
+  .info-sec{padding:38px 0 0;}
+  .info-sec > h2{
+    font-size:clamp(22px,4.6vw,30px);color:var(--violet-deep);
+    margin:0 0 6px;font-weight:700;line-height:1.15;
+  }
+  .info-sec > .sub{color:var(--ink-soft);font-size:16px;margin:0 0 20px;}
+ 
+  .info-grid{display:grid;gap:12px;}
+  .info-card{
+    background:var(--white);border:1px solid var(--line);border-radius:13px;
+    padding:16px 18px;box-shadow:0 5px 14px rgba(78,78,78,0.08);
+  }
+  .info-card h3{margin:0 0 5px;font-size:16.5px;color:var(--violet-deep);font-weight:700;}
+  .info-card p{margin:0;font-size:15.5px;line-height:1.55;color:var(--ink);}
+ 
+  .info-list{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
+  .info-list li{
+    display:flex;gap:11px;align-items:flex-start;
+    background:var(--white);border:1px solid var(--line);border-radius:11px;
+    padding:13px 15px;font-size:15.5px;line-height:1.55;
+  }
+  .info-list li::before{
+    content:"\2713";flex:none;
+    width:22px;height:22px;border-radius:50%;
+    background:var(--violet-deep);color:#fff;
+    font-size:12px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;margin-top:2px;
+  }
+  .info-list.gold li::before{content:"+";background:var(--gold);font-size:15px;}
+  .info-list b{color:var(--violet-deep);}
+ 
+  .steps{counter-reset:st;display:grid;gap:10px;}
+  .steps .st{display:flex;gap:13px;align-items:flex-start;background:var(--lavender-tint);border-radius:12px;padding:14px 16px;}
+  .steps .st .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--gold);color:#fff;font-family:"Montserrat",sans-serif;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .steps .st h3{margin:0 0 3px;font-size:16px;color:var(--violet-deep);font-weight:700;}
+  .steps .st p{margin:0;font-size:15.5px;line-height:1.55;color:var(--ink);}
+ 
+  /* Tarifs */
+  .price-main{
+    background:linear-gradient(160deg,var(--violet),var(--violet-deep));
+    color:#fff;border-radius:16px;padding:26px 24px;
+    box-shadow:0 14px 34px rgba(122,90,176,0.28);
+  }
+  .price-main h3{margin:0 0 4px;font-size:20px;color:#fff;font-weight:700;}
+  .price-main .what{color:rgba(255,255,255,0.85);font-size:15px;margin:0 0 18px;}
+  .price-rows{display:grid;gap:12px;}
+  .price-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;border-top:1px solid rgba(255,255,255,0.28);padding-top:12px;}
+  .price-row:first-child{border-top:none;padding-top:0;}
+  .price-row .lab{font-size:15.5px;color:rgba(255,255,255,0.95);}
+  .price-row .lab small{display:block;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.45;}
+  .amount{
+    font-family:"Montserrat",sans-serif;font-weight:700;font-size:19px;
+    color:var(--gold-light);white-space:nowrap;
+  }
+  .todo{
+    border:1.5px dashed var(--gold-light);border-radius:6px;
+    padding:1px 8px;color:var(--gold-light);
+  }
+  .opt-table{display:grid;gap:9px;}
+  .opt-row{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    background:var(--white);border:1px solid var(--line);border-radius:11px;padding:13px 15px;
+  }
+  .opt-row .lab{font-size:15.5px;color:var(--ink);}
+  .opt-row .lab b{color:var(--violet-deep);display:block;}
+  .opt-row .lab small{color:var(--ink-soft);font-size:13.5px;line-height:1.45;}
+  .opt-row .amount{color:var(--gold);font-size:16.5px;}
+  .opt-row .todo{border-color:var(--gold);color:var(--gold);}
+ 
+  .info-note{
+    background:var(--beige-pale);border:1px solid var(--gold-soft);border-radius:12px;
+    padding:15px 17px;font-size:15px;line-height:1.6;color:#3A2C05;margin-top:14px;
+  }
+ 
+  .faq{display:grid;gap:10px;}
+  .faq details{background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .faq summary{list-style:none;cursor:pointer;padding:14px 16px;font-family:"Montserrat",sans-serif;font-size:15.5px;font-weight:600;color:var(--violet-deep);display:flex;align-items:center;gap:10px;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .chevron{margin-left:auto;color:var(--gold);font-size:12px;transition:transform .25s ease;}
+  .faq details[open] summary .chevron{transform:rotate(180deg);}
+  .faq .fbody{padding:0 16px 16px;font-size:15.5px;line-height:1.6;color:var(--ink);}
+  .faq .fbody p{margin:0 0 10px;}
+  .faq .fbody p:last-child{margin:0;}
+ 
+  .info-cta{background:linear-gradient(160deg,var(--violet),var(--violet-deep));border-radius:16px;padding:32px 26px;text-align:center;margin-top:40px;box-shadow:0 16px 40px rgba(122,90,176,0.3);}
+  .info-cta h2{color:#fff;font-size:23px;margin:0 0 12px;font-weight:700;font-family:"Montserrat",sans-serif;}
+  .info-cta p{color:rgba(255,255,255,0.92);font-size:15.5px;margin:0 auto 22px;max-width:460px;line-height:1.6;}
+ 
+  @media (max-width:560px){
+    .info-pill{font-size:12px;padding:8px 13px;max-width:42vw;}
+    .dl-pill{font-size:12px;padding:8px 13px;}
+    .price-row,.opt-row{flex-direction:column;align-items:flex-start;gap:4px;}
+  }
 </style>
 </head>
 <body>
@@ -336,6 +469,7 @@
 
 <header class="hero">
   <div class="wrap">
+    <button class="info-pill" id="infoPill">Plus d'infos sur l'appli</button>
     <button class="dl-pill" id="dlPill">📲 Télécharger</button>
     <span class="accent">Après la conférence,</span>
     <h1>Reprenez la main sur votre temps</h1>
@@ -442,6 +576,141 @@
     </div>
   </div>
 </footer>
+
+<!-- ====== PAGE : PLUS D'INFOS SUR L'APPLI ====== -->
+<div class="info-page" id="infoPage" role="dialog" aria-modal="true" aria-label="Informations sur le livret d'après-conférence">
+ 
+  <div class="info-topbar">
+    <span class="brand">AcéKom</span>
+    <button class="info-back" id="infoBack">&#8592; Revenir au livret</button>
+  </div>
+ 
+  <div class="info-hero">
+    <div class="info-body">
+      <h1>Le livret d'après-conférence</h1>
+      <p>Vos idées ne s'arrêtent pas à la salle. Pendant 21 jours, votre public les met en pratique, un pas par jour, dans une application à votre nom.</p>
+    </div>
+  </div>
+ 
+  <div class="info-body">
+ 
+    <section class="info-sec">
+      <h2>Ce que vit votre public</h2>
+      <p class="sub">De la fin de votre conférence au vingt et unième jour.</p>
+      <div class="steps">
+        <div class="st"><span class="n">1</span><div><h3>Il scanne le QR code</h3><p>Affiché sur votre dernière diapositive. Pas de store, pas de téléchargement, pas de formulaire : le livret s'ouvre directement.</p></div></div>
+        <div class="st"><span class="n">2</span><div><h3>Il choisit son parcours</h3><p>Si vous en proposez plusieurs, chacun prend celui qui lui parle. Sa progression est enregistrée parcours par parcours.</p></div></div>
+        <div class="st"><span class="n">3</span><div><h3>Il installe le livret sur son écran d'accueil</h3><p>En trois gestes, l'application s'ajoute à son téléphone comme n'importe quelle autre. Votre nom reste sous ses yeux tous les jours.</p></div></div>
+        <div class="st"><span class="n">4</span><div><h3>Il avance un jour à la fois</h3><p>Chaque jour : une idée de votre conférence, une action concrète, quelques mots à écrire. Il coche, il voit le chemin se remplir.</p></div></div>
+      </div>
+    </section>
+ 
+    <section class="info-sec">
+      <h2>Ce qui est inclus</h2>
+      <p class="sub">Le livret de base, livré prêt à distribuer.</p>
+      <ul class="info-list">
+        <li><span><b>Un parcours complet de 21 jours</b>, structuré en trois semaines, à partir du contenu de votre conférence.</span></li>
+        <li><span><b>Votre identité visuelle</b> : couleurs, typographies, logo, ton. Le livret ressemble à votre univers, pas à un gabarit.</span></li>
+        <li><span><b>L'installation comme application</b> sur iPhone et Android, avec le mode d'emploi intégré.</span></li>
+        <li><span><b>Une adresse à votre nom</b> en sous-domaine, du type <i>votrenom.acekom.fr</i>.</span></li>
+        <li><span><b>Le QR code et la diapositive de clôture</b> à projeter en fin de conférence.</span></li>
+        <li><span><b>La sauvegarde des réponses et de la progression</b> sur l'appareil du participant.</span></li>
+        <li><span><b>L'hébergement et la maintenance technique</b> pendant toute la durée de l'abonnement.</span></li>
+        <li><span><b>Une page de clôture</b> au jour 21, avec le lien vers votre site ou votre prise de contact.</span></li>
+      </ul>
+    </section>
+ 
+    <section class="info-sec">
+      <h2>Ce que vous personnalisez</h2>
+      <p class="sub">Tout ce qui est visible est à vous.</p>
+      <div class="info-grid">
+        <div class="info-card"><h3>Le contenu des 21 jours</h3><p>Chaque jour porte un titre, une idée tirée de votre conférence, une action à faire et une question à laquelle répondre. Vous écrivez, nous intégrons.</p></div>
+        <div class="info-card"><h3>Les couleurs et les typographies</h3><p>Reprises de votre site, de votre charte ou de vos supports de conférence. Une couleur par semaine pour marquer la progression.</p></div>
+        <div class="info-card"><h3>Les textes d'accueil et de clôture</h3><p>Le titre, la promesse, le mot d'introduction, la phrase du jour 22. Votre voix du début à la fin.</p></div>
+        <div class="info-card"><h3>Le nom des parcours</h3><p>Vous découpez votre sujet comme vous voulez : par thème, par métier, par niveau.</p></div>
+        <div class="info-card"><h3>Vos liens</h3><p>Site, réseaux, prise de rendez-vous, formulaire de contact : placés là où ils seront vus après trois semaines de fidélité.</p></div>
+      </div>
+    </section>
+ 
+    <section class="info-sec">
+      <h2>Les options</h2>
+      <p class="sub">À ajouter au livret de base, maintenant ou plus tard.</p>
+      <ul class="info-list gold">
+        <li><span><b>Parcours supplémentaires</b> — plusieurs entrées dans votre sujet, chacune avec ses 21 jours. Le participant choisit, ou les suit l'un après l'autre.</span></li>
+        <li><span><b>Compte participant</b> — connexion en un clic, progression retrouvée sur tous ses appareils, et le nombre d'inscrits visible côté conférencier.</span></li>
+        <li><span><b>Les images du jour</b> — vos diapositives de conférence rattachées aux jours correspondants, consultables d'un bouton.</span></li>
+        <li><span><b>Inscription à votre newsletter</b> — un bloc d'inscription relié à votre outil d'emailing, proposé aux participants qui n'y sont pas encore.</span></li>
+        <li><span><b>Nom de domaine dédié</b> — une adresse à vous seul plutôt qu'un sous-domaine.</span></li>
+        <li><span><b>Rédaction du contenu</b> — nous transformons votre conférence en 21 jours d'exercices, à partir de vos supports et d'un entretien.</span></li>
+        <li><span><b>Mise à jour annuelle</b> — révision du contenu, ajout de jours, nouveaux parcours.</span></li>
+        <li><span><b>Version en langue étrangère</b> — le même livret, traduit et adapté.</span></li>
+      </ul>
+    </section>
+ 
+    <section class="info-sec">
+      <h2>Les tarifs</h2>
+      <p class="sub">Une création, puis un abonnement annuel qui couvre l'hébergement et la maintenance.</p>
+ 
+      <div class="price-main">
+        <h3>Le livret</h3>
+        <p class="what">Un parcours de 21 jours, votre identité visuelle, l'installation en application, le QR code et la diapositive de clôture.</p>
+        <div class="price-rows">
+          <div class="price-row">
+            <span class="lab">Création<small>Conception, intégration de votre contenu, mise en ligne.</small></span>
+            <span class="amount"><span class="todo">à compléter</span></span>
+          </div>
+          <div class="price-row">
+            <span class="lab">Abonnement annuel<small>Hébergement, nom de domaine, maintenance, corrections.</small></span>
+            <span class="amount"><span class="todo">à compléter</span></span>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="opt-table" style="margin-top:18px;">
+        <div class="opt-row"><span class="lab"><b>Parcours supplémentaire</b><small>Par parcours de 21 jours ajouté.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
+        <div class="opt-row"><span class="lab"><b>Compte participant</b><small>Connexion, progression multi-appareils, suivi des inscriptions.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
+        <div class="opt-row"><span class="lab"><b>Images du jour</b><small>Intégration de vos diapositives de conférence.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
+        <div class="opt-row"><span class="lab"><b>Inscription newsletter</b><small>Raccordement à votre outil d'emailing.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
+        <div class="opt-row"><span class="lab"><b>Nom de domaine dédié</b><small>Réservation et configuration.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
+        <div class="opt-row"><span class="lab"><b>Rédaction des 21 jours</b><small>À partir de vos supports et d'un entretien.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
+        <div class="opt-row"><span class="lab"><b>Mise à jour annuelle du contenu</b><small>Révision, ajout de jours ou de parcours.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
+        <div class="opt-row"><span class="lab"><b>Version en langue étrangère</b><small>Traduction et adaptation d'un parcours.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
+      </div>
+ 
+      <p class="info-note">Les tarifs s'entendent hors taxes. Le devis est établi après un premier échange, une fois le nombre de parcours et les options arrêtés.</p>
+    </section>
+ 
+    <section class="info-sec">
+      <h2>Comment ça se passe</h2>
+      <p class="sub">Du premier échange à la conférence.</p>
+      <div class="steps">
+        <div class="st"><span class="n">1</span><div><h3>Un échange</h3><p>Vous racontez votre conférence, votre public, ce que vous voulez qu'il en fasse. Nous vous disons ce qui est faisable et à quel prix.</p></div></div>
+        <div class="st"><span class="n">2</span><div><h3>Le contenu</h3><p>Vous fournissez vos 21 jours, ou nous les rédigeons à partir de vos supports. Vous validez avant intégration.</p></div></div>
+        <div class="st"><span class="n">3</span><div><h3>La mise en forme</h3><p>Nous intégrons votre identité visuelle et vous envoyons un lien de recette à tester sur votre propre téléphone.</p></div></div>
+        <div class="st"><span class="n">4</span><div><h3>La mise en ligne</h3><p>Le livret est publié à votre adresse. Vous recevez le QR code et la diapositive de clôture à ajouter à votre présentation.</p></div></div>
+      </div>
+    </section>
+ 
+    <section class="info-sec">
+      <h2>Questions fréquentes</h2>
+      <div class="faq">
+        <details><summary>Faut-il passer par l'App Store ou Google Play ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Non. Le livret est une application web : elle s'ouvre dans le navigateur et s'ajoute à l'écran d'accueil en trois gestes. Aucune validation de store, aucun délai, aucune commission.</p></div></details>
+        <details><summary>Que deviennent les données des participants ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Sans l'option compte participant, rien ne sort de leur téléphone : réponses et progression restent dans leur navigateur.</p><p>Avec l'option, les données sont hébergées en France et servent uniquement à retrouver la progression. Vous voyez le nombre d'inscrits, jamais le contenu de leurs réponses.</p></div></details>
+        <details><summary>Puis-je modifier le contenu après la mise en ligne ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Oui. Les corrections de texte sont comprises dans l'abonnement. Les ajouts plus larges — nouveaux jours, nouveau parcours — relèvent des options.</p></div></details>
+        <details><summary>Est-ce que ça fonctionne hors connexion ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Le livret s'ouvre depuis l'écran d'accueil comme une application. Une connexion est nécessaire au premier chargement de chaque jour.</p></div></details>
+        <details><summary>Combien de participants peut-il accueillir ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Il n'y a pas de limite pratique pour des conférences de quelques centaines à quelques milliers de personnes. Au-delà, nous en parlons en amont.</p></div></details>
+        <details><summary>Et si j'ai plusieurs conférences différentes ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Chaque conférence peut avoir son livret, ou devenir un parcours supplémentaire à l'intérieur du même livret. La seconde option est nettement moins coûteuse.</p></div></details>
+      </div>
+    </section>
+ 
+    <div class="info-cta">
+      <h2>Parlons de votre conférence</h2>
+      <p>Dites-nous en deux lignes votre sujet et votre public. Nous vous répondons avec une proposition chiffrée.</p>
+      <a class="btn" href="mailto:acekom84@gmail.com?subject=Livret%20d%27apr%C3%A8s-conf%C3%A9rence%20-%20demande%20de%20devis">Écrire à AcéKom</a>
+    </div>
+ 
+  </div>
+</div>  
 
 <!-- Modale : image du jour -->
 <div class="slide-modal" id="slideModal">
@@ -702,6 +971,28 @@
     location.reload();
   };
 
+  /* ---------- Page « Plus d'infos » ---------- */
+  var infoPage = document.getElementById("infoPage");
+  function showInfo(push){
+    infoPage.classList.add("show");
+    document.body.classList.add("locked");
+    infoPage.scrollTop = 0;
+    if(push !== false && location.hash !== "#infos"){
+      history.pushState(null, "", "#infos");
+    }
+  }
+  function hideInfo(){
+    infoPage.classList.remove("show");
+    document.body.classList.remove("locked");
+    if(location.hash === "#infos"){ history.pushState(null, "", location.pathname + location.search); }
+  }
+  document.getElementById("infoPill").onclick = function(){ showInfo(); };
+  document.getElementById("infoBack").onclick = hideInfo;
+  window.addEventListener("hashchange", function(){
+    if(location.hash === "#infos"){ showInfo(false); } else { hideInfo(); }
+  });
+  if(location.hash === "#infos"){ showInfo(false); }
+
   /* ---------- Télécharger ---------- */
   var installOverlay = document.getElementById("installOverlay");
   function showInstall(){ installOverlay.classList.add("show"); }
@@ -710,7 +1001,7 @@
   document.getElementById("installContinue").onclick = hideInstall;
   installOverlay.addEventListener("click", function(e){ if(e.target === installOverlay){ hideInstall(); } });
   document.addEventListener("keydown", function(e){
-    if(e.key === "Escape"){ hideInstall(); closeSlide(); }
+   if(e.key === "Escape"){ hideInstall(); closeSlide(); hideInfo(); }
   });
 </script>
 </body>
