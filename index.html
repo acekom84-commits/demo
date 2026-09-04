@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7A5AB0">
+<meta name="robots" content="index, follow">
+<title>Démo | Le livret d'après-conférence | AcéKom</title>
+<meta name="description" content="Démonstration d'un livret d'après-conférence interactif : 21 jours pour transformer une conférence en habitude. Réalisé par AcéKom.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Violets */
+    --violet:#9579D1;
+    --violet-deep:#7A5AB0;
+    --lavender:#C7B9E6;
+    --lavender-pale:#D1C6E0;
+    --lavender-tint:#F0EBF8;
+
+    /* Ors */
+    --gold:#B99019;
+    --gold-soft:#D1B579;
+    --gold-light:#F3D169;
+    --beige:#E6DBC1;
+    --beige-pale:#F6F0E4;
+
+    /* Neutres */
+    --grey-bg:#F5F5F5;
+    --white:#FEFEFE;
+    --ink:#4E4E4E;
+    --ink-soft:#7C7C7C;
+    --black:#000000;
+    --line:rgba(78,78,78,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;background:var(--grey-bg) !important;}
+  body{
+    margin:0;
+    background:var(--grey-bg) !important;
+    color:var(--ink);
+    font-family:"Lora",Georgia,serif;
+    font-size:18px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px;}
+  h1,h2,h3,.step-num,.btn,.daycheck span,.slide-btn,.howto summary,.week-tag{font-family:"Montserrat",system-ui,sans-serif;}
+  .accent{font-family:"Caveat",cursive;font-weight:700;}
+
+  /* ---------- BANDEAU DÉMO ---------- */
+  .demo-bar{
+    background:linear-gradient(90deg,var(--gold-light),var(--gold-soft));
+    color:#3A2C05;
+    font-family:"Montserrat",sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    text-align:center;
+    padding:10px 18px;
+    line-height:1.45;
+  }
+  .demo-bar b{font-weight:700;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    background:linear-gradient(165deg,var(--violet) 0%,var(--violet-deep) 100%);
+    color:#fff;
+    padding:64px 0 34px;
+    text-align:center;
+  }
+  .hero .accent{font-size:30px;display:block;margin:0 0 -4px;color:var(--gold-light);}
+  .hero h1{
+    font-size:clamp(36px,8.5vw,62px);
+    font-weight:700;
+    line-height:1.05;
+    margin:0 0 16px;
+    color:#fff;
+  }
+  .hero .lede{font-size:18px;color:rgba(255,255,255,0.9);max-width:540px;margin:0 auto 24px;}
+  .parcours-line{font-family:"Montserrat",sans-serif;font-size:14px;color:rgba(255,255,255,0.82);margin:0 0 16px;}
+  .parcours-line b{color:var(--gold-light);font-weight:600;}
+  .hero .from{font-size:15px;color:rgba(255,255,255,0.88);font-style:italic;}
+  .hero .from b{color:#fff;font-style:normal;font-family:"Caveat",cursive;font-size:22px;font-weight:700;}
+
+  .dl-pill{
+    position:absolute;top:14px;right:14px;z-index:50;
+    font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700;letter-spacing:0.02em;
+    color:#3A2C05;background:linear-gradient(135deg,var(--gold-light),var(--gold-soft));
+    border:none;border-radius:30px;
+    padding:10px 17px;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,0.25);
+    transition:filter .2s ease, transform .2s ease;
+    max-width:70vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .dl-pill:hover{filter:brightness(1.07);transform:translateY(-1px);}
+
+  /* ---------- CE QU'IL FAUT SAVOIR ---------- */
+  .howto{background:var(--violet-deep);padding:10px 0 44px;}
+  .howto .wrap{max-width:720px;}
+  .howto details{
+    background:var(--white);
+    border-radius:16px;
+    box-shadow:0 12px 34px rgba(0,0,0,0.22);
+    overflow:hidden;
+  }
+  .howto summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:center;gap:12px;
+    padding:18px 22px;
+    font-size:17px;font-weight:700;color:var(--violet-deep);
+  }
+  .howto summary::-webkit-details-marker{display:none;}
+  .howto summary .chevron{
+    margin-left:auto;flex:none;font-size:13px;color:var(--gold);
+    transition:transform .25s ease;
+  }
+  .howto details[open] summary .chevron{transform:rotate(180deg);}
+  .howto .panel{padding:0 18px 18px;display:grid;gap:11px;}
+  .howto .item{
+    display:flex;gap:14px;align-items:flex-start;
+    background:var(--lavender-tint);
+    border-radius:12px;
+    padding:15px 17px;
+  }
+  .howto .item .n{
+    flex:none;width:29px;height:29px;border-radius:50%;
+    background:var(--gold);color:#fff;
+    font-family:"Montserrat",sans-serif;font-weight:700;font-size:14px;
+    display:flex;align-items:center;justify-content:center;margin-top:2px;
+  }
+  .howto .item h3{margin:0 0 4px;font-size:16px;font-weight:700;color:var(--violet-deep);}
+  .howto .item p{margin:0;font-size:15.5px;line-height:1.55;color:var(--ink);}
+
+  /* ---------- PROGRESSION ---------- */
+  .progress{
+    position:sticky;top:0;z-index:30;
+    background:var(--ink);
+    border-bottom:2px solid var(--gold);
+    padding:13px 0;
+  }
+  .progress .row{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .progress .count{font-family:"Montserrat";font-weight:600;font-size:14px;letter-spacing:0.03em;color:rgba(255,255,255,0.9);white-space:nowrap;}
+  .progress .count b{color:var(--gold-light);font-size:19px;}
+  .track{flex:1;height:8px;border-radius:6px;background:rgba(255,255,255,0.22);overflow:hidden;}
+  .fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:6px;transition:width .45s ease;}
+
+  /* ---------- SEMAINES : UNE COULEUR PAR SEMAINE ---------- */
+  .week{padding:44px 0 46px;}
+  .week.band-1{background:var(--lavender-pale);}
+  .week.band-2{background:var(--grey-bg);}
+  .week.band-3{background:var(--beige);}
+
+  .week-tag{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.1em;
+    padding:5px 12px;border-radius:20px;margin-bottom:10px;color:#fff;
+  }
+  .band-1 .week-tag{background:var(--violet-deep);}
+  .band-2 .week-tag{background:var(--gold);}
+  .band-3 .week-tag{background:var(--ink);}
+
+  .week-head h2{font-size:clamp(27px,6.5vw,40px);font-weight:700;margin:0 0 10px;line-height:1.1;color:var(--violet-deep);}
+  .band-3 .week-head h2{color:#5C4A1A;}
+  .week-head .intro{font-size:17px;margin:0;max-width:580px;color:var(--ink);}
+
+  .days{margin-top:26px;display:grid;gap:14px;}
+
+  /* ---------- CARTE JOUR ---------- */
+  .day{
+    background:var(--white);
+    border-radius:14px;
+    border:1px solid var(--line);
+    border-left:6px solid var(--gold);
+    box-shadow:0 6px 18px rgba(78,78,78,0.12);
+    overflow:hidden;
+    transition:border-color .25s ease, background .25s ease;
+  }
+  .day.done{background:var(--lavender-tint);border-left-color:var(--violet-deep);border-color:rgba(122,90,176,0.3);}
+
+  .day-head{display:flex;align-items:center;gap:14px;padding:15px 17px;cursor:pointer;user-select:none;}
+  .step-num{
+    flex:none;width:42px;height:42px;border-radius:50%;
+    background:var(--gold);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:16px;
+  }
+  .day.done .step-num{background:var(--violet-deep);}
+  .day-title{flex:1;min-width:0;}
+  .day-title .small{display:block;font-family:"Montserrat";font-size:11px;letter-spacing:0.1em;color:var(--gold);font-weight:700;text-transform:uppercase;}
+  .day.done .day-title .small{color:var(--violet-deep);}
+  .day-title .big{display:block;font-family:"Montserrat";font-weight:600;font-size:17px;color:var(--ink);line-height:1.25;}
+  .day.done .day-title .big{color:var(--violet-deep);}
+  .badge{
+    display:none;flex:none;align-items:center;gap:5px;
+    font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.04em;
+    background:var(--violet-deep);color:#fff;border-radius:20px;padding:4px 10px;
+  }
+  .day.done .badge{display:inline-flex;}
+  .chev{flex:none;color:var(--ink-soft);transition:transform .3s ease;font-size:13px;}
+  .day.open .chev{transform:rotate(180deg);}
+
+  .day-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+  .day.open .day-body{max-height:900px;}
+  .day-body-inner{padding:2px 17px 18px;}
+  .field{margin:0 0 14px;}
+  .field .ft{font-family:"Montserrat";font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-soft);margin:0 0 5px;}
+  .field p{margin:0;font-size:16.5px;line-height:1.6;color:var(--ink);}
+  .field.action{background:var(--beige-pale);border:1px solid var(--gold-soft);border-radius:10px;padding:13px 15px;}
+  .field.action .ft{color:#8A6B0F;}
+  .field.action p{font-weight:600;color:#3A2C05;}
+
+  .answer-box{
+    width:100%;font-family:"Lora",serif;font-size:15.5px;line-height:1.55;
+    padding:11px 13px;border:1px solid var(--line);border-radius:10px;
+    background:#fff;color:var(--ink);resize:vertical;min-height:76px;
+  }
+  .answer-box::placeholder{color:rgba(78,78,78,0.45);}
+  .answer-box:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px rgba(149,121,209,0.25);}
+  .save-hint{display:block;height:15px;margin-top:5px;font-family:"Montserrat",sans-serif;font-size:12px;font-weight:600;color:var(--violet-deep);opacity:0;transition:opacity .2s ease;}
+  .save-hint.show{opacity:1;}
+
+  /* Bouton image du jour */
+  .slide-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-soft));
+    color:#3A2C05;border:none;border-radius:24px;
+    font-size:14px;font-weight:700;padding:10px 18px;margin:2px 0 16px;
+    cursor:pointer;transition:filter .2s ease, transform .2s ease;
+  }
+  .slide-btn:hover{filter:brightness(1.07);transform:translateY(-1px);}
+
+  .quote{font-style:italic;color:var(--ink-soft);border-top:1px dotted var(--gold-soft);padding-top:12px;margin:4px 0 12px;font-size:15.5px;}
+
+  .daycheck{
+    display:flex;align-items:center;gap:10px;margin-top:4px;
+    background:var(--lavender-tint);border:1px solid var(--lavender);
+    border-radius:10px;padding:10px 13px;cursor:pointer;
+  }
+  .day.done .daycheck{background:rgba(122,90,176,0.14);border-color:var(--violet-deep);}
+  .daycheck input{width:20px;height:20px;accent-color:var(--violet-deep);cursor:pointer;flex:none;}
+  .daycheck span{font-size:12.5px;font-weight:700;color:var(--violet-deep);letter-spacing:0.03em;}
+
+  /* ---------- MODALE SLIDE ---------- */
+  .slide-modal{position:fixed;inset:0;z-index:220;background:rgba(35,25,55,0.92);backdrop-filter:blur(5px);display:none;padding:22px;overflow-y:auto;}
+  .slide-modal.show{display:flex;}
+  .slide-box{margin:auto;max-width:620px;width:100%;text-align:center;}
+  .slide-frame{
+    background:linear-gradient(160deg,var(--violet-deep),#5C4189);
+    border:3px solid #fff;border-radius:8px;
+    aspect-ratio:16/9;display:flex;flex-direction:column;justify-content:center;
+    padding:26px 30px;box-shadow:0 24px 60px rgba(0,0,0,0.5);
+  }
+  .slide-kicker{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--gold-light);text-transform:uppercase;margin-bottom:14px;}
+  .slide-quote{font-family:"Lora",serif;font-style:italic;font-size:clamp(17px,3.4vw,26px);line-height:1.4;color:#fff;margin:0;}
+  .slide-sig{font-family:"Caveat",cursive;font-size:clamp(17px,3vw,23px);color:var(--gold-light);margin-top:16px;}
+  .slide-note{color:rgba(255,255,255,0.78);font-size:14px;margin:16px auto 0;max-width:460px;line-height:1.55;}
+  .slide-close{margin-top:18px;}
+
+  /* ---------- CLÔTURE ---------- */
+  .closing{background:var(--grey-bg);padding:52px 0 44px;text-align:center;}
+  .closing .accent{font-size:29px;color:var(--gold);}
+  .closing h2{font-size:clamp(26px,6vw,40px);color:var(--violet-deep);margin:4px 0 16px;font-weight:700;}
+  .closing p{color:var(--ink);max-width:540px;margin:0 auto 16px;}
+  .closing .pledge{font-family:"Lora";font-style:italic;font-size:20px;color:var(--violet-deep);max-width:560px;margin:24px auto 0;}
+
+  .btn{
+    display:inline-block;background:linear-gradient(135deg,var(--gold-light),var(--gold-soft));
+    color:#3A2C05;
+    font-weight:700;text-decoration:none;padding:14px 26px;border-radius:30px;
+    font-size:15px;border:none;cursor:pointer;font-family:"Montserrat",sans-serif;
+    transition:filter .2s ease, transform .2s ease;
+  }
+  .btn:hover{filter:brightness(1.07);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--violet-deep);border:2px solid var(--violet-deep);}
+  .btn-ghost:hover{background:var(--violet-deep);color:#fff;filter:none;}
+  .more{margin-top:30px;}
+
+  /* ---------- CTA AGENCE ---------- */
+  .agency{background:var(--grey-bg);padding:0 20px 60px;text-align:center;}
+  .agency .box{
+    max-width:580px;margin:0 auto;
+    background:linear-gradient(160deg,var(--violet),var(--violet-deep));
+    border-radius:16px;padding:32px 28px;
+    box-shadow:0 16px 40px rgba(122,90,176,0.3);
+  }
+  .agency h3{color:#fff;font-size:22px;margin:0 0 12px;font-weight:700;font-family:"Montserrat",sans-serif;}
+  .agency p{color:rgba(255,255,255,0.92);font-size:15.5px;line-height:1.6;margin:0 auto 22px;max-width:460px;}
+
+  /* ---------- PIED DE PAGE ---------- */
+  footer{background:var(--ink);padding:38px 0;text-align:center;font-size:14px;color:rgba(255,255,255,0.82);}
+  footer .name{font-family:"Caveat",cursive;font-size:28px;color:#fff;}
+  footer .meta{margin:8px 0;}
+  footer a{color:var(--gold-light);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+  footer .fine{font-size:12px;color:rgba(255,255,255,0.58);margin-top:14px;line-height:1.6;}
+  .reset-link{background:none;border:none;color:rgba(255,255,255,0.82);font-family:"Montserrat",sans-serif;font-size:13px;text-decoration:underline;cursor:pointer;padding:0;}
+  .reset-link:hover{color:#fff;}
+
+  a:focus-visible,.day-head:focus-visible,.daycheck input:focus-visible,.btn:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:4px;}
+
+  /* ---------- OVERLAY TÉLÉCHARGER ---------- */
+  .install-overlay{position:fixed;inset:0;z-index:200;background:rgba(35,25,55,0.95);backdrop-filter:blur(6px);display:none;padding:22px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .install-overlay.show{display:flex;}
+  .install-card{margin:auto;background:linear-gradient(160deg,var(--violet),var(--violet-deep));border:2px solid var(--gold-soft);border-radius:18px;max-width:640px;width:100%;padding:30px 26px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,0.45);}
+  .install-card h2{color:#fff;font-size:23px;margin:0 0 10px;font-weight:700;}
+  .install-intro{color:rgba(255,255,255,0.9);font-size:15px;line-height:1.6;margin:0 auto 22px;max-width:480px;}
+  .install-cols{display:flex;gap:16px;text-align:left;}
+  .install-col{flex:1;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:16px 18px;}
+  .install-col h3{color:var(--gold-light);font-size:16px;margin:0 0 12px;font-weight:700;font-family:"Montserrat",sans-serif;}
+  .install-col ol{margin:0;padding-left:20px;color:rgba(255,255,255,0.92);font-size:14px;line-height:1.7;}
+  .install-col li{margin-bottom:7px;}
+  .install-col strong{color:#fff;}
+  .install-continue{width:100%;margin-top:22px;}
+
+  @media (max-width:560px){
+    body{font-size:17px;}
+    header.hero{padding:60px 0 30px;}
+    .day-head{padding:13px;gap:11px;}
+    .step-num{width:36px;height:36px;font-size:14px;}
+    .badge{display:none !important;}
+    .install-cols{flex-direction:column;}
+    .install-card h2{font-size:21px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <b>Démonstration</b> Conférencière et conférence fictives. Votre progression reste sur votre appareil, rien n'est envoyé.
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <button class="dl-pill" id="dlPill">📲 Télécharger</button>
+    <span class="accent">Après la conférence,</span>
+    <h1>Reprenez la main sur votre temps</h1>
+    <p class="lede">21 jours pour transformer une conférence en habitude. <br>Un pas après l'autre.</p>
+    <p class="parcours-line">Parcours : <b>Retrouver du temps pour l'essentiel</b></p>
+    <p class="from">Le prolongement de la conférence de<br><b>Claire Vasseur</b></p>
+  </div>
+</header>
+
+<section class="howto">
+  <div class="wrap">
+
+    <details open>
+      <summary>Ce qu'il faut savoir avant le jour 1<span class="chevron">&#9660;</span></summary>
+      <div class="panel">
+
+        <div class="item">
+          <span class="n">1</span>
+          <div>
+            <h3>Pourquoi 21 jours ?</h3>
+            <p>Trois semaines, c'est le temps qu'il faut à une pratique pour cesser d'être un effort et devenir une habitude. Ce qui compte, ce n'est pas la performance mais la régularité.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="n">2</span>
+          <div>
+            <h3>Un pas par jour.</h3>
+            <p>Chaque jour, une action à faire et quelques mots à écrire.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="n">3</span>
+          <div>
+            <h3>Cochez chaque jour accompli.</h3>
+            <p>Voir le chemin se remplir fait partie du moteur. Et si vous sautez un jour, reprenez où vous en étiez, quand vous voulez.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="n">4</span>
+          <div>
+            <h3>Les images de la conférence.</h3>
+            <p>Certains jours portent un bouton orange « L'image du jour » : il affiche la diapositive projetée pendant la conférence sur ce thème précis.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="n">5</span>
+          <div>
+            <h3>Ceci est une démonstration.</h3>
+            <p>Claire Vasseur et sa conférence sont fictives. Vos réponses restent dans ce navigateur, sur cet appareil : aucun compte, aucun envoi. Dans un livret réel, chacun se connecte en un clic et retrouve sa progression partout.</p>
+          </div>
+        </div>
+
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<div class="progress">
+  <div class="wrap row">
+    <span class="count"><b id="doneCount">0</b> / 21 jours</span>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+</div>
+
+<main id="weeks"></main>
+
+<section class="closing">
+  <div class="wrap">
+    <span class="accent">Jour 22, et tous les suivants</span>
+    <h2>Le temps ne se trouve pas, il se décide</h2>
+    <p>La conférence était le jour zéro. Ce livret vous a mené au jour 21. À partir de demain, vous n'avez plus besoin de livret : vous avez une méthode.</p>
+    <p class="pledge">« On ne manque jamais de temps pour ce qu'on a vraiment décidé. »</p>
+    <div class="more">
+      <a class="btn btn-ghost" href="#" onclick="return false;">Retrouver Claire Vasseur (lien site internet)</a>
+    </div>
+  </div>
+</section>
+
+<section class="agency">
+  <div class="wrap">
+    <div class="box">
+      <h3>Ce livret existe pour votre conférence</h3>
+      <p>Vous êtes conférencier, formateur ou coach ? AcéKom conçoit votre livret d'après-conférence : votre contenu, votre identité visuelle, vos parcours, vos diapositives. Distribué par QR code, installable comme une application, sans passer par les stores.</p>
+      <a class="btn" href="mailto:acekom84@gmail.com?subject=Livret%20d%27apr%C3%A8s-conf%C3%A9rence%20-%20demande%20d%27information">Écrire à AcéKom</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="name">AcéKom</div>
+    <div class="meta">Livrets d'après-conférence interactifs</div>
+    <div class="meta"><a href="mailto:acekom84@gmail.com">acekom84@gmail.com</a></div>
+    <div class="meta"><button class="reset-link" id="resetBtn">Recommencer la démo à zéro</button></div>
+    <div class="fine">
+      Démonstration. « Claire Vasseur » et sa conférence sont fictives ; le contenu des 21 jours a été écrit pour cet exemple.<br>
+      Aucune inscription, aucun compte, aucune donnée transmise : vos réponses sont enregistrées uniquement dans votre navigateur.<br>
+      © 2026 AcéKom
+    </div>
+  </div>
+</footer>
+
+<!-- Modale : image du jour -->
+<div class="slide-modal" id="slideModal">
+  <div class="slide-box">
+    <div class="slide-frame">
+      <div class="slide-kicker" id="slideKicker">Conférence de Claire Vasseur</div>
+      <p class="slide-quote" id="slideQuote"></p>
+      <div class="slide-sig">Claire Vasseur</div>
+    </div>
+    <p class="slide-note">Exemple de diapositive. Dans un livret réel, ce bouton affiche la vraie image projetée pendant la conférence.</p>
+    <button class="btn slide-close" id="slideClose">Fermer</button>
+  </div>
+</div>
+
+<!-- Overlay : télécharger -->
+<div class="install-overlay" id="installOverlay">
+  <div class="install-card">
+    <h2>Gardez le livret sur votre écran 📲</h2>
+    <p class="install-intro">Le livret s'installe comme une application, en quelques secondes, pour le retrouver directement depuis l'écran d'accueil de votre téléphone. Rien à télécharger sur un store.</p>
+    <div class="install-cols">
+      <div class="install-col">
+        <h3>Sur iPhone</h3>
+        <ol>
+          <li>En bas de l'écran, cliquez sur <strong>Partager</strong></li>
+          <li>Descendez jusqu'à <strong>« Sur l'écran d'accueil »</strong></li>
+          <li>Cliquez sur <strong>Ajouter</strong></li>
+        </ol>
+      </div>
+      <div class="install-col">
+        <h3>Sur Android</h3>
+        <ol>
+          <li>Ouvrez le menu <strong>⋮</strong></li>
+          <li>Cliquez sur <strong>Ajouter à l'écran d'accueil</strong></li>
+          <li>Cliquez sur <strong>Ajouter</strong></li>
+        </ol>
+      </div>
+    </div>
+    <button class="btn install-continue" id="installContinue">Revenir au livret</button>
+  </div>
+</div>
+
+<script>
+  /* ============================================================
+     LIVRET DÉMO — AcéKom (v6)
+     Aucune base de données, aucune connexion.
+     Progression et réponses : localStorage du navigateur.
+     ============================================================ */
+
+  var STORAGE_KEY = "acekom_demo_livret_v1";
+  var total = 21;
+
+  var weeks = [
+    {
+      tag:"Semaine 1",
+      title:"Voir clair",
+      intro:"On croit manquer de temps ; le plus souvent, on manque de visibilité. Cette semaine, vous regardez où vos heures partent vraiment.",
+      days:[
+        {n:1,t:"Le constat",idea:"Personne ne gère son temps à l'aveugle avec succès. Avant de changer quoi que ce soit, il faut savoir ce qui se passe réellement dans une journée.",action:"Aujourd'hui, notez à trois moments (midi, 17 h, le soir) ce que vous avez fait depuis la dernière note. Sans juger, juste constater.",slide:"On ne corrige jamais ce qu'on n'a pas d'abord regardé en face."},
+        {n:2,t:"Les voleurs discrets",idea:"Ce ne sont pas les grosses tâches qui grignotent la journée, ce sont les micro-interruptions. Chacune coûte plus que sa durée : il faut ensuite se remettre dedans.",action:"Repérez trois interruptions vécues aujourd'hui. Pour chacune, notez si elle venait de l'extérieur ou de vous-même."},
+        {n:3,t:"L'illusion du multitâche",idea:"Le cerveau ne fait pas deux choses à la fois : il alterne, et paie un péage à chaque bascule. Faire une seule chose est la version rapide, pas la version lente.",action:"Choisissez une tâche et donnez-lui 25 minutes pleines : un seul onglet, téléphone retourné. Notez ensuite ce que vous avez avancé.",slide:"Faire une chose à la fois, c'est la version rapide."},
+        {n:4,t:"Le vrai prix d'un oui",idea:"Chaque oui donné trop vite est un non silencieux à autre chose. Le problème n'est pas d'accepter, c'est d'accepter sans avoir regardé ce que cela déplace.",action:"Repensez à un « oui » lâché trop vite cette semaine. Écrivez ce à quoi vous avez dit non sans le vouloir."},
+        {n:5,t:"Votre heure reine",idea:"Nous n'avons pas la même énergie à 9 h et à 15 h. Placer une tâche exigeante dans un creux, c'est doubler le temps nécessaire.",action:"Identifiez le moment de la journée où vous êtes le plus net. Demain, réservez-lui la tâche qui demande le plus de tête."},
+        {n:6,t:"Le tri du réel",idea:"Une liste de tâches n'est pas une liste de priorités. Tant que tout est au même niveau, c'est l'urgence qui décide à votre place.",action:"Listez tout ce qui vous attend. Entourez les trois lignes qui feraient une vraie différence si elles étaient faites."},
+        {n:7,t:"Premier regard en arrière",idea:"Observer sans changer, c'est déjà changer. Une semaine d'attention suffit à faire remonter des évidences invisibles jusque-là.",action:"Relisez vos notes des six derniers jours. Écrivez la seule phrase qui résume ce que vous avez découvert.",quote:"Une semaine d'observation vaut mieux qu'un mois de bonnes intentions.",slide:"Une semaine d'observation vaut mieux qu'un mois de bonnes intentions."}
+      ]
+    },
+    {
+      tag:"Semaine 2",
+      title:"Choisir",
+      intro:"Voir ne suffit pas. Cette semaine, vous arbitrez : ce qui passe devant, ce qui attend, ce qui disparaît.",
+      days:[
+        {n:8,t:"L'essentiel d'abord",idea:"Ce qui est fait tôt est fait. Repoussé après les urgences, l'essentiel n'arrive jamais, parce que les urgences ne s'arrêtent pas.",action:"Demain matin, avant d'ouvrir vos messages, avancez 30 minutes sur la tâche qui compte le plus. Notez ce que ça change sur le reste de la journée.",slide:"Ce qui est fait tôt est fait. Le reste sera négocié."},
+        {n:9,t:"Un non qui respecte",idea:"Refuser n'est pas fermer la porte. Un non clair et rapide est plus respectueux qu'un oui mou suivi d'un retard ou d'un travail bâclé.",action:"Formulez par écrit un refus que vous devez à quelqu'un : le non, la raison en une phrase, et si possible une alternative."},
+        {n:10,t:"Le bloc protégé",idea:"Un temps qui n'est pas dans l'agenda n'existe pas. Il sera pris par quelqu'un d'autre, et ce quelqu'un aura raison : la case était vide.",action:"Bloquez 90 minutes cette semaine dans votre agenda, avec un intitulé précis. Traitez ce rendez-vous comme s'il était avec un client.",slide:"Un temps qui n'est pas dans l'agenda n'existe pas."},
+        {n:11,t:"Confier sans reprendre",idea:"On garde souvent une tâche parce qu'expliquer prendrait plus de temps que faire. C'est vrai une fois. C'est faux dès la deuxième.",action:"Choisissez une tâche récurrente que vous pourriez confier. Écrivez à qui, et les trois points à transmettre pour qu'elle soit bien faite."},
+        {n:12,t:"Trois lignes, pas trente",idea:"Une liste de quinze tâches produit de la culpabilité, pas des résultats. Trois tâches choisies produisent trois tâches faites.",action:"Ce soir, écrivez les trois tâches de demain. Trois, pas quatre. Le reste ira sur une autre liste."},
+        {n:13,t:"Le rendez-vous avec soi",idea:"Le temps pour soi n'est pas ce qui reste à la fin. S'il n'est pas placé au début, il n'y a jamais de fin assez tôt.",action:"Placez dans la semaine un moment pour vous, à une heure précise. Prévenez qui doit l'être, puis tenez-le."},
+        {n:14,t:"Ce qui a bougé",idea:"Deux semaines suffisent à sentir un déplacement. Le nommer, c'est ce qui l'ancre.",action:"Notez trois changements concrets depuis le jour 1 : dans votre agenda, dans votre énergie, dans vos relations de travail."}
+      ]
+    },
+    {
+      tag:"Semaine 3",
+      title:"Tenir",
+      intro:"Une bonne décision qui ne tient pas trois semaines n'est qu'une bonne intention. Cette semaine, vous installez ce qui restera.",
+      days:[
+        {n:15,t:"Dix minutes de cadrage",idea:"Une journée qui commence sans direction se remplit toute seule, et rarement du bon. Dix minutes de cadrage en économisent une heure.",action:"Demain, avant toute chose, prenez dix minutes pour écrire l'objectif de la journée et vos trois tâches.",slide:"Dix minutes de cadrage en économisent soixante."},
+        {n:16,t:"Fermer la journée",idea:"Ce qui reste ouvert dans la tête continue de tourner le soir. Une clôture nette libère la soirée autant que le lendemain.",action:"Ce soir, prenez cinq minutes : ce qui est fait, ce qui bascule à demain, puis vous fermez. Notez comment vous vous sentez après."},
+        {n:17,t:"Des réunions qui servent",idea:"Une réunion sans objectif écrit ni durée annoncée s'étire jusqu'à remplir le temps disponible. Le cadre n'est pas de la rigidité, c'est du respect.",action:"Pour votre prochaine réunion, écrivez en une phrase ce qui doit être décidé, et annoncez l'heure de fin en ouvrant."},
+        {n:18,t:"Le droit au suffisant",idea:"Les vingt derniers pourcents de perfection coûtent souvent autant que les quatre-vingts premiers. Sur beaucoup de sujets, personne ne les remarque.",action:"Identifiez une tâche où vous en faites trop. Livrez-la aujourd'hui à un niveau suffisant, et observez la réaction réelle."},
+        {n:19,t:"Reprendre après un trou",idea:"Ce n'est pas le jour manqué qui casse une habitude, c'est le renoncement qui suit. Deux jours de suite, en revanche, ça compte.",action:"Décidez maintenant de votre règle de reprise : que ferez-vous, très précisément, le lendemain d'un jour manqué ?",slide:"Ce n'est pas le jour manqué qui casse tout. C'est le deuxième."},
+        {n:20,t:"Accrocher l'habitude",idea:"Une habitude tient quand elle s'accroche à quelque chose qui existe déjà : un café, un trajet, une réunion récurrente. La volonté seule ne suffit pas.",action:"Choisissez l'habitude de ces trois semaines que vous gardez, et le geste quotidien auquel vous allez l'accrocher."},
+        {n:21,t:"Votre nouveau rapport au temps",idea:"Vous n'avez pas gagné des heures : vous avez changé la façon dont vous les attribuez. C'est plus durable, et ça ne se perd pas.",action:"Écrivez ce que ces 21 jours ont changé, et l'engagement que vous prenez pour les trois mois qui viennent.",quote:"Le temps ne se gagne pas, il se choisit.",slide:"Le temps ne se gagne pas. Il se choisit."}
+      ]
+    }
+  ];
+
+  /* ---------- Construction du livret ---------- */
+  var weeksEl = document.getElementById("weeks");
+
+  weeks.forEach(function(week, wi){
+    var sec = document.createElement("section");
+    sec.className = "week band-" + (wi + 1);
+    var html = '<div class="wrap">';
+    html += '<div class="week-head">';
+    html += '<span class="week-tag">' + week.tag + '</span>';
+    html += '<h2>' + week.title + '</h2>';
+    html += '<p class="intro">' + week.intro + '</p>';
+    html += '</div>';
+    html += '<div class="days">';
+    week.days.forEach(function(d){
+      html += '<article class="day" data-day="' + d.n + '">';
+      html += '<div class="day-head" role="button" tabindex="0" aria-expanded="false">';
+      html += '<span class="step-num">' + d.n + '</span>';
+      html += '<span class="day-title"><span class="small">Jour ' + d.n + '</span><span class="big">' + d.t + '</span></span>';
+      html += '<span class="badge">Vécu &#10003;</span>';
+      html += '<span class="chev" aria-hidden="true">&#9660;</span>';
+      html += '</div>';
+      html += '<div class="day-body"><div class="day-body-inner">';
+      html += '<div class="field"><p class="ft">L\'idée</p><p>' + d.idea + '</p></div>';
+      html += '<div class="field action"><p class="ft">Votre pas d\'aujourd\'hui</p><p>' + d.action + '</p></div>';
+      if(d.slide){
+        html += '<button class="slide-btn" data-slide="' + d.n + '">&#128444;&#65039; L\'image du jour</button>';
+      }
+      html += '<div class="field"><p class="ft">Votre réponse</p><textarea class="answer-box" data-answer-day="' + d.n + '" rows="3" placeholder="Écrivez ici votre réponse… (enregistrée sur cet appareil)"></textarea><span class="save-hint" data-hint-day="' + d.n + '"></span></div>';
+      if(d.quote){ html += '<p class="quote">' + d.quote + '</p>'; }
+      html += '<label class="daycheck"><input type="checkbox" data-check="' + d.n + '"><span>Marquer ce jour comme vécu</span></label>';
+      html += '</div></div>';
+      html += '</article>';
+    });
+    html += '</div></div>';
+    sec.innerHTML = html;
+    weeksEl.appendChild(sec);
+  });
+
+  /* ---------- Index des slides par jour ---------- */
+  var slidesByDay = {};
+  weeks.forEach(function(w){
+    w.days.forEach(function(d){ if(d.slide){ slidesByDay[d.n] = d.slide; } });
+  });
+
+  /* ---------- Ouverture / fermeture des jours ---------- */
+  function toggleDay(day){
+    var open = day.classList.toggle("open");
+    var head = day.querySelector(".day-head");
+    if(head){ head.setAttribute("aria-expanded", open ? "true" : "false"); }
+  }
+
+  document.querySelectorAll(".day-head").forEach(function(head){
+    head.addEventListener("click", function(){ toggleDay(head.closest(".day")); });
+    head.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); toggleDay(head.closest(".day")); }
+    });
+  });
+
+  /* ---------- Stockage local ---------- */
+  function loadState(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw){ return { jours:[], reponses:{} }; }
+      var s = JSON.parse(raw);
+      return { jours: s.jours || [], reponses: s.reponses || {} };
+    }catch(e){ return { jours:[], reponses:{} }; }
+  }
+
+  function saveState(){
+    var s = {
+      jours: Array.prototype.slice.call(document.querySelectorAll('input[data-check]:checked'))
+        .map(function(i){ return parseInt(i.getAttribute('data-check'), 10); }),
+      reponses: {}
+    };
+    document.querySelectorAll("[data-answer-day]").forEach(function(ta){
+      if(ta.value.trim() !== ""){ s.reponses[ta.getAttribute("data-answer-day")] = ta.value; }
+    });
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }catch(e){}
+  }
+
+  /* ---------- Progression ---------- */
+  var doneCountEl = document.getElementById("doneCount");
+  var fillEl = document.getElementById("fill");
+
+  function refresh(){
+    var done = document.querySelectorAll('input[data-check]:checked').length;
+    doneCountEl.textContent = done;
+    fillEl.style.width = (done / total * 100) + "%";
+  }
+
+  document.querySelectorAll('input[data-check]').forEach(function(input){
+    input.addEventListener("change", function(){
+      var day = input.closest(".day");
+      if(input.checked){ day.classList.add("done"); } else { day.classList.remove("done"); }
+      refresh();
+      saveState();
+    });
+    input.addEventListener("click", function(e){ e.stopPropagation(); });
+  });
+
+  /* ---------- Réponses ---------- */
+  var saveTimer = null;
+  var lastDay = null;
+
+  function flashSaved(day){
+    var hint = document.querySelector('[data-hint-day="' + day + '"]');
+    if(!hint){ return; }
+    hint.textContent = "Enregistré ✓";
+    hint.classList.add("show");
+    setTimeout(function(){ hint.classList.remove("show"); }, 1800);
+  }
+
+  document.querySelectorAll("[data-answer-day]").forEach(function(ta){
+    ta.addEventListener("click", function(e){ e.stopPropagation(); });
+    ta.addEventListener("input", function(){
+      lastDay = ta.getAttribute("data-answer-day");
+      if(saveTimer){ clearTimeout(saveTimer); }
+      saveTimer = setTimeout(function(){ saveState(); flashSaved(lastDay); }, 900);
+    });
+    ta.addEventListener("blur", function(){ saveState(); });
+  });
+
+  /* ---------- Modale image du jour ---------- */
+  var slideModal = document.getElementById("slideModal");
+  var slideQuote = document.getElementById("slideQuote");
+
+  function openSlide(n){
+    slideQuote.textContent = "« " + (slidesByDay[n] || "") + " »";
+    slideModal.classList.add("show");
+  }
+  function closeSlide(){ slideModal.classList.remove("show"); }
+
+  document.querySelectorAll("[data-slide]").forEach(function(btn){
+    btn.addEventListener("click", function(e){
+      e.stopPropagation();
+      openSlide(btn.getAttribute("data-slide"));
+    });
+  });
+  document.getElementById("slideClose").onclick = closeSlide;
+  slideModal.addEventListener("click", function(e){ if(e.target === slideModal){ closeSlide(); } });
+
+  /* ---------- Restauration au chargement ---------- */
+  (function init(){
+    var s = loadState();
+    document.querySelectorAll('input[data-check]').forEach(function(input){
+      var d = parseInt(input.getAttribute('data-check'), 10);
+      var on = s.jours.indexOf(d) !== -1;
+      input.checked = on;
+      if(on){ input.closest('.day').classList.add('done'); }
+    });
+    document.querySelectorAll("[data-answer-day]").forEach(function(ta){
+      var n = ta.getAttribute("data-answer-day");
+      if(s.reponses[n] != null){ ta.value = s.reponses[n]; }
+    });
+    refresh();
+  })();
+
+  /* ---------- Réinitialisation ---------- */
+  document.getElementById("resetBtn").onclick = function(){
+    if(!confirm("Effacer votre progression et vos réponses sur cet appareil ?")){ return; }
+    try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+    location.reload();
+  };
+
+  /* ---------- Télécharger ---------- */
+  var installOverlay = document.getElementById("installOverlay");
+  function showInstall(){ installOverlay.classList.add("show"); }
+  function hideInstall(){ installOverlay.classList.remove("show"); }
+  document.getElementById("dlPill").onclick = showInstall;
+  document.getElementById("installContinue").onclick = hideInstall;
+  installOverlay.addEventListener("click", function(e){ if(e.target === installOverlay){ hideInstall(); } });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){ hideInstall(); closeSlide(); }
+  });
+</script>
+</body>
+</html>
