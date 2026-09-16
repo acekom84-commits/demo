@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#7A5AB0">
 <meta name="robots" content="index, follow">
 <title>Démo by AcéKom</title>
-<meta name="description" content="Démonstration d'un livret d'après-conférence interactif : 21 jours pour transformer une conférence en habitude. Réalisé par AcéKom.">
+<meta name="description" content="Démonstration d'un livret d'après-conférence interactif : 21 jours, 21 actions pour mettre la conférence en pratique. Réalisé par AcéKom.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
@@ -561,6 +561,36 @@
   .confetti-piece{position:absolute;top:-20px;width:8px;height:13px;background:var(--gold);animation:confetti-fall 2.4s ease-in forwards;}
   @keyframes confetti-fall{to{transform:translate(var(--drift),110vh) rotate(650deg);}}
   @media(prefers-reduced-motion:reduce){.day.celebrate .step-num,.confetti-piece{animation:none;}.confetti-layer{display:none;}}
+
+  /* Commercial information and estimator — same palette as the demo. */
+  header.hero{padding-top:88px;}
+  .info-pill{max-width:calc(100% - 185px);white-space:normal;line-height:1.35;}
+  .info-nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;justify-content:center;}
+  .info-hero .info-body{padding-bottom:0;}
+  .estimate-form{display:grid;gap:16px;margin-top:22px;}
+  .estimate-form fieldset{min-width:0;margin:0;padding:18px;border:1px solid var(--lavender);border-radius:12px;background:var(--white);}
+  .estimate-form legend{font:700 16px "Montserrat",sans-serif;color:var(--violet-deep);padding:0 6px;}
+  .estimate-option{display:flex;align-items:flex-start;gap:12px;padding:10px 0;font-size:15px;line-height:1.5;}
+  .estimate-option input[type=checkbox]{flex:none;width:20px;height:20px;accent-color:var(--violet-deep);margin-top:2px;}
+  .estimate-option small{display:block;color:var(--ink-soft);}
+  .estimate-number{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:12px 0;font-size:15px;}
+  .estimate-number input{width:85px;padding:9px;border:1px solid var(--lavender);border-radius:8px;font:inherit;}
+  .estimate-form select{width:100%;padding:12px;border:1px solid var(--lavender);border-radius:8px;font:inherit;font-size:15px;color:var(--ink);background:white;}
+  .estimate-result{background:var(--lavender-tint);padding:24px;border:2px solid var(--lavender);border-radius:14px;margin-top:20px;}
+  .estimate-result h3{margin:0;color:var(--violet-deep);font-size:18px;}
+  #estimateTotal{display:block;font:700 clamp(27px,6vw,38px) "Montserrat",sans-serif;color:var(--violet-deep);margin:12px 0;}
+  #estimateDetails{padding-left:20px;font-size:14px;}
+  .estimate-result p{font-size:14px;}
+  .estimate-result .btn{margin-top:10px;}
+  #estimation{scroll-margin-top:85px;}
+  .info-page input:focus-visible,.info-page select:focus-visible{outline:3px solid var(--violet);outline-offset:3px;}
+  @media(max-width:560px){
+    header.hero{padding-top:108px;}
+    .info-pill{max-width:calc(100% - 158px);font-size:12px;}
+    .info-topbar{padding:12px;gap:10px;}
+    .estimate-result{padding:18px;}
+  }
+
 </style>
 </head>
 <body>
@@ -571,11 +601,11 @@
 
 <header class="hero">
   <div class="wrap">
-    <button class="info-pill" id="infoPill">+ d'infos sur l'appli</button>
+    <button class="info-pill" id="infoPill">En savoir plus sur l'application</button>
     <button class="dl-pill" id="dlPill">📲 Télécharger</button>
     <span class="accent">Après la conférence,</span>
     <h1>Reprenez la main sur votre temps</h1>
-    <p class="lede">21 jours pour transformer une conférence en habitude. <br>Un pas après l'autre.</p>
+    <p class="lede">21 jours, 21 actions : avancez jour après jour pour mettre la conférence en pratique.</p>
     <p class="parcours-line">Parcours : <b>Retrouver du temps pour l'essentiel</b></p>
     <p class="from">Le prolongement de la conférence de<br><b>Florence Acéka</b></p>
     <button class="google-review" type="button" aria-describedby="googleReviewNote" onclick="document.getElementById('googleReviewNote').hidden = false;">
@@ -601,7 +631,7 @@
         <div class="item">
           <div>
             <h3>Pourquoi 21 jours ?</h3>
-            <p>Trois semaines, c'est le temps qu'il faut à une pratique pour cesser d'être un effort et devenir une habitude. Ce qui compte, ce n'est pas la performance mais la régularité.</p>
+            <p>21 jours, ce sont 21 occasions de mettre la conférence en pratique. L'objectif n'est pas de promettre une habitude en exactement trois semaines, mais d'avancer régulièrement.</p>
           </div>
         </div>
 
@@ -711,144 +741,120 @@
     <div class="meta"><button class="reset-link" id="resetBtn">Recommencer la démo à zéro</button></div>
     <div class="fine">
       Démonstration. Le contenu des 21 jours a été écrit pour cet exemple.<br>
-      Aucune inscription, aucun compte, aucune donnée transmise : vos réponses sont enregistrées uniquement dans votre navigateur.<br>
+      La démo est accessible sans compte : vos réponses et votre progression restent dans votre navigateur.<br>Le formulaire « Restons en contact » transmet uniquement votre inscription si vous choisissez de vous abonner.<br>
       © 2026 AcéKom
     </div>
   </div>
 </footer>
 
-<!-- ====== PAGE : PLUS D'INFOS SUR L'APPLI ====== -->
-<div class="info-page" id="infoPage" role="dialog" aria-modal="true" aria-label="Informations sur le livret d'après-conférence">
- 
-  <div class="info-topbar">
-    <span class="brand">AcéKom</span>
-    <button class="info-back" id="infoBack">&#8592; Revenir au livret</button>
-  </div>
- 
-  <div class="info-hero">
-    <div class="info-body">
-      <h1>Votre livret interactif</h1>
-      <p>Vos idées ne s'arrêtent pas à la salle. Pendant 21 jours, votre public les met en pratique, un pas par jour, dans une application à votre nom.</p>
-    </div>
-  </div>
- 
+<!-- ====== PAGE : EN SAVOIR PLUS SUR L'APPLICATION ====== -->
+<div class="info-page" id="infoPage" role="dialog" aria-modal="true" aria-labelledby="infoTitle" tabindex="-1">
+  <div class="info-topbar"><span class="brand">AcéKom</span><button class="info-back" id="infoBack" type="button">&#8592; Revenir au livret</button></div>
+  <div class="info-hero"><div class="info-body">
+    <h1 id="infoTitle">Votre conférence ne devrait pas s'arrêter à la dernière slide.</h1>
+    <p>L'application 21 jours prolonge l'impact de votre conférence et transforme l'inspiration en action.</p>
+    <nav class="info-nav" aria-label="Découvrir votre application"><a class="btn" href="#estimation" id="estimateLink">Estimer mon application</a></nav>
+  </div></div>
   <div class="info-body">
- 
+    <section class="info-sec">
+      <h2>21 jours pour continuer à faire vivre votre message</h2>
+      <p>Une conférence peut provoquer un déclic, donner de l'énergie, faire réfléchir. Puis chacun retourne à son quotidien. Les notes restent dans un carnet et les bonnes intentions sont rattrapées par les urgences.</p>
+      <p>À l'issue de votre intervention, les participants accèdent à votre application. Pendant 21 jours, ils retrouvent votre univers à travers des contenus courts : une idée, une citation, une réflexion et une action à réaliser.</p>
+      <p>Ils suivent leur progression et retrouvent leurs réponses au fil du parcours. <strong>Votre message continue à les accompagner pendant 21 jours.</strong></p>
+    </section>
+    <section class="info-sec">
+      <h2>Et pour votre activité de conférencier ?</h2>
+      <p class="sub">Un prolongement pour vos participants, un outil de développement pour votre activité.</p>
+      <div class="info-grid">
+        <div class="info-card"><h3>Vous différencier</h3><p>Vous arrivez avec une conférence et un dispositif permettant d'accompagner les participants après votre intervention.</p></div>
+        <div class="info-card"><h3>Donner davantage de valeur à votre offre</h3><p>Pour une entreprise, une conférence accompagnée d'un parcours de 21 jours apporte une continuité concrète. Vous pouvez l'intégrer à votre propre proposition commerciale.</p></div>
+        <div class="info-card"><h3>Créer un lien avec votre audience</h3><p>Grâce à la création de compte et à l'intégration avec votre CRM Brevo, vous gardez le lien avec les participants qui entrent dans votre parcours.</p></div>
+        <div class="info-card"><h3>Développer votre écosystème</h3><p>Votre site et vos réseaux sociaux trouvent naturellement leur place dans l'application. En option, vos participants peuvent accéder à votre livre ou déposer un avis Google.</p></div>
+        <div class="info-card"><h3>Valoriser votre méthode</h3><p>Votre expertise devient un parcours structuré que les participants peuvent expérimenter dans leur quotidien.</p></div>
+        <div class="info-card"><h3>Créer de nouvelles opportunités commerciales</h3><p>Entreprises, DRH, agences, organisateurs : à la question « Que reste-t-il de la conférence trois semaines plus tard ? », vous apportez une réponse concrète.</p></div>
+      </div>
+      <p class="info-note">« Mon intervention comprend également un accompagnement digital de vos collaborateurs pendant 21 jours. » Une proposition que vous pouvez valoriser auprès de vos clients.</p>
+    </section>
+    <section class="info-sec">
+      <h2>Une application qui vous ressemble</h2>
+      <p>Votre conférence, votre méthode, vos messages et vos objectifs donnent le ton. L'application reprend votre identité visuelle, votre logo, vos couleurs, votre site et vos réseaux sociaux.</p>
+      <p>Nous vous accompagnons pour structurer vos 21 étapes et intégrer vos contenus. Si vous souhaitez nous confier la conception et la rédaction complètes, une option dédiée est prévue.</p>
+    </section>
     <section class="info-sec">
       <h2>Ce que vit votre public</h2>
-      <p class="sub">De la fin de votre conférence / formation au 21ème jour.</p>
       <div class="steps">
-        <div class="st"><span class="n">1</span><div><h3>Il scanne le QR code</h3><p>Affiché sur votre dernière diapositive. Pas de store, pas de téléchargement, pas de formulaire : le livret s'ouvre directement.</p></div></div>
-        <div class="st"><span class="n">2</span><div><h3>Il choisit son parcours</h3><p>Si vous en proposez plusieurs, chacun prend celui qui lui parle. Sa progression est enregistrée dans chaque parcours.</p></div></div>
-        <div class="st"><span class="n">3</span><div><h3>Il installe le livret sur son écran d'accueil</h3><p>En trois gestes, l'application s'ajoute à son téléphone comme n'importe quelle autre.</p></div></div>
-        <div class="st"><span class="n">4</span><div><h3>Il avance un jour à la fois</h3><p>Chaque jour : une idée de votre conférence ou formation, une action concrète, quelques mots à écrire. Il coche, il voit le chemin se remplir.</p></div></div>
+        <div class="st"><span class="n">1</span><div><h3>Il scanne votre QR code</h3><p>L'application web s'ouvre dans son navigateur, sans passer par un store.</p></div></div>
+        <div class="st"><span class="n">2</span><div><h3>Il crée son compte et se connecte</h3><p>Le compte participant lui permet de retrouver ses réponses et sa progression. Il choisit son parcours si vous en proposez plusieurs.</p></div></div>
+        <div class="st"><span class="n">3</span><div><h3>Il retrouve facilement votre application</h3><p>Il peut ajouter un raccourci sur l'écran d'accueil de son téléphone.</p></div></div>
+        <div class="st"><span class="n">4</span><div><h3>Il passe à l'action, jour après jour</h3><p>Une idée, une action, quelques mots à écrire : il avance à son rythme et coche chaque jour accompli.</p></div></div>
       </div>
     </section>
- 
     <section class="info-sec">
-      <h2>Ce qui est inclus</h2>
-      <p class="sub">Le livret de base, livré prêt à distribuer.</p>
+      <h2>Votre application — 1 490 € HT</h2>
+      <p class="sub">Un socle complet, personnalisé à votre univers.</p>
       <ul class="info-list">
-        <li><span><b>Un parcours complet de 21 jours</b>, structuré en trois semaines, à partir du contenu de votre conférence ou formation.</span></li>
-        <li><span><b>Votre identité visuelle</b> : couleurs, logo, diapositives... Le livret ressemble à votre univers.</span></li>
-        <li><span><b>L'installation comme application</b> sur iPhone et Android, avec le mode d'emploi intégré.</span></li>
-        <li><span><b>Une adresse à votre nom</b> en sous-domaine, du type <i>votrenom.acekom.fr</i>.</span></li>
-        <li><span><b>Le QR code et la diapositive de clôture</b> à projeter en fin de conférence.</span></li>
-        <li><span><b>La sauvegarde des réponses et de la progression</b> sur l'appareil du participant.</span></li>
-        <li><span><b>L'hébergement et la maintenance technique</b> pendant toute la durée de l'abonnement.</span></li>
-        <li><span><b>Une page de clôture</b> au jour 21, avec le lien vers votre site ou votre prise de contact.</span></li>
+        <li><span><b>Une application web personnalisée et un parcours de 21 jours</b> : actions, citations et zones de réflexion.</span></li>
+        <li><span><b>Compte participant et connexion inclus</b>, avec sauvegarde de la progression et des réponses.</span></li>
+        <li><span><b>Intégration CRM Brevo incluse.</b></span></li>
+        <li><span><b>Couleurs, logo, site et réseaux sociaux inclus</b>, avec personnalisation du pied de page.</span></li>
+        <li><span><b>Affichage mobile et ordinateur</b>, mise en ligne et paramétrage, QR code d'accès et diapositive de clôture.</span></li>
+        <li><span><b>Accompagnement à la construction du parcours</b> et intégration de vos contenus. La conception et la rédaction intégrales sont proposées en option.</span></li>
       </ul>
     </section>
- 
     <section class="info-sec">
-      <h2>Ce que vous personnalisez</h2>
-      <p class="sub">Tout ce qui est visible est à vous.</p>
-      <div class="info-grid">
-        <div class="info-card"><h3>Le contenu des 21 jours</h3><p>Chaque jour porte un titre, une idée tirée de votre conférence, une action à faire et une question à laquelle répondre. Vous écrivez, nous intégrons.</p></div>
-        <div class="info-card"><h3>Les couleurs</h3><p>Reprises de votre site, de votre charte ou de vos supports de conférence. Une couleur par semaine pour marquer la progression.</p></div>
-        <div class="info-card"><h3>Les textes d'accueil et de clôture</h3><p>Le titre, la promesse, le mot d'introduction, la phrase du jour 22. Votre voix du début à la fin.</p></div>
-        <div class="info-card"><h3>Le parcours principal</h3><p>Vous découpez votre sujet comme vous voulez : par thème, par métier, par niveau.</p></div>
-        <div class="info-card"><h3>Compte participant</h3><p> Connexion en un clic, progression retrouvée sur tous ses appareils.</p></div>
-        <div class="info-card"><h3>Vos liens</h3><p>Site internet, adresse mail et réseaux : placés en footer de l'application.</p></div>
+      <h2>Pourquoi 21 jours ?</h2>
+      <p>Une conférence peut déclencher quelque chose. Mais c'est ce que l'on en fait ensuite qui compte. L'objectif n'est pas de promettre qu'une habitude sera créée en exactement 21 jours.</p>
+      <p><strong>L'objectif est de créer 21 occasions de repenser à votre message, de l'expérimenter et de passer à l'action.</strong></p>
+    </section>
+    <section class="info-sec" id="estimation" tabindex="-1" aria-labelledby="estimateTitle">
+      <h2 id="estimateTitle">Estimer mon application</h2>
+      <p class="sub">À quoi ressemblerait votre application ? Sélectionnez vos options et obtenez immédiatement une première estimation.</p>
+      <form class="estimate-form" id="estimateForm">
+        <fieldset><legend>Vos parcours de 21 jours</legend>
+          <label class="estimate-number" for="extraPaths"><span>Parcours supplémentaires<br><small>1 parcours inclus, puis +450 € HT par parcours</small></span><input id="extraPaths" type="number" min="0" max="100" step="1" value="0"></label>
+          <label class="estimate-option"><input id="firstWriting" type="checkbox"><span><b>Conception / rédaction complète du premier parcours</b><small>À partir de votre conférence et de vos supports : +450 € HT.</small></span></label>
+          <label class="estimate-number" for="extraWriting"><span>Parcours supplémentaires à concevoir intégralement<br><small>+300 € HT chacun, en plus des 450 € d'intégration</small></span><input id="extraWriting" type="number" min="0" max="0" step="1" value="0" disabled aria-describedby="writingHint"></label>
+          <p id="writingHint" style="font-size:13px">Ajoutez un parcours supplémentaire pour sélectionner sa conception complète.</p>
+        </fieldset>
+        <fieldset><legend>Vos slides</legend>
+          <label for="slidesOption">Choisissez la prestation souhaitée</label>
+          <select id="slidesOption"><option value="0">Sans slides — 0 €</option><option value="150">Intégration de slides fournies — +150 € HT</option><option value="300">Adaptation / création de slides — +300 € HT</option></select>
+          <p style="font-size:13px">Une seule prestation slides est comptée dans cette estimation.</p>
+        </fieldset>
+        <fieldset><legend>Vos boutons et liens supplémentaires</legend>
+          <label class="estimate-option"><input id="bookOption" type="checkbox"><span><b>Bouton « Acheter mon livre »</b><small>+50 € HT</small></span></label>
+          <label class="estimate-option"><input id="reviewOption" type="checkbox"><span><b>Bouton « Avis Google »</b><small>+50 € HT</small></span></label>
+          <p class="info-note">Livre + avis : 80 € HT au lieu de 100 €. Le tarif groupé s'applique automatiquement.</p>
+          <label class="estimate-number" for="extraCta"><span>CTA supplémentaires spécifiques<br><small>+50 € HT par bouton</small></span><input id="extraCta" type="number" min="0" max="100" step="1" value="0"></label>
+        </fieldset>
+      </form>
+      <div class="estimate-result">
+        <h3>Estimation de votre application</h3>
+        <output id="estimateTotal" aria-live="polite" aria-atomic="true" form="estimateForm">1 490 € HT</output>
+        <ul id="estimateDetails"></ul>
+        <p>Cette estimation est indicative. Un devis personnalisé sera établi après échange sur votre projet. Les éventuels frais récurrents d'hébergement et de maintenance seront précisés dans le devis et ne sont pas compris dans ce total de création.</p>
+        <a class="btn" id="estimateContact" href="mailto:acekom84@gmail.com">Parlons de mon application</a>
+        <p>Ce bouton ouvre votre messagerie avec le récapitulatif de vos choix. Vous pourrez le compléter avant de l'envoyer.</p>
       </div>
     </section>
- 
-    <section class="info-sec">
-      <h2>Les options</h2>
-      <p class="sub">À ajouter au livret de base, maintenant ou plus tard.</p>
-      <ul class="info-list gold">
-        <li><span><b>Parcours supplémentaires</b> — plusieurs entrées dans votre sujet, chacune avec ses 21 jours. Le participant choisit, ou les suit l'un après l'autre.</span></li>
-        <li><span><b>Les images du jour</b> — vos diapositives de conférence rattachées aux jours correspondants, consultables d'un bouton.</span></li>
-        <li><span><b>Inscription à votre newsletter</b> — un bloc d'inscription relié à votre outil d'emailing (CRM), proposé aux participants qui n'y sont pas encore.</span></li>
-        <li><span><b>Rédaction du contenu</b> — nous transformons votre conférence en 21 jours d'exercices, à partir de vos supports et d'un entretien.</span></li>
-        <li><span><b>Bouton supplémentaire</b> — pour ajouter un lien vers la vente de votre livre, un webinaire...</span></li>
-      </ul>
-    </section>
- 
-    <section class="info-sec">
-      <h2>Les tarifs</h2>
-      <p class="sub">Une création, puis un abonnement annuel qui couvre l'hébergement et la maintenance.</p>
- 
-      <div class="price-main">
-        <h3>Le livret</h3>
-        <p class="what">Un parcours de 21 jours, votre identité visuelle, l'installation en application, le QR code et la diapositive de clôture.</p>
-        <div class="price-rows">
-          <div class="price-row">
-            <span class="lab">Création<small>Conception, intégration de votre contenu, mise en ligne.</small></span>
-            <span class="amount"><span class="todo">à compléter</span></span>
-          </div>
-          <div class="price-row">
-            <span class="lab">Abonnement annuel<small>Hébergement, nom de domaine, maintenance, corrections.</small></span>
-            <span class="amount"><span class="todo">à compléter</span></span>
-          </div>
-        </div>
-      </div>
- 
-      <div class="opt-table" style="margin-top:18px;">
-        <div class="opt-row"><span class="lab"><b>Parcours supplémentaire</b><small>Par parcours de 21 jours ajouté.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
-        <div class="opt-row"><span class="lab"><b>Compte participant</b><small>Connexion, progression multi-appareils, suivi des inscriptions.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
-        <div class="opt-row"><span class="lab"><b>Images du jour</b><small>Intégration de vos diapositives de conférence.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
-        <div class="opt-row"><span class="lab"><b>Inscription newsletter</b><small>Raccordement à votre outil d'emailing.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
-        <div class="opt-row"><span class="lab"><b>Nom de domaine dédié</b><small>Réservation et configuration.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
-        <div class="opt-row"><span class="lab"><b>Rédaction des 21 jours</b><small>À partir de vos supports et d'un entretien.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
-        <div class="opt-row"><span class="lab"><b>Mise à jour annuelle du contenu</b><small>Révision, ajout de jours ou de parcours.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
-        <div class="opt-row"><span class="lab"><b>Version en langue étrangère</b><small>Traduction et adaptation d'un parcours.</small></span><span class="amount"><span class="todo">à compléter</span></span></div>
-      </div>
- 
-      <p class="info-note">Les tarifs s'entendent hors taxes. Le devis est établi après un premier échange, une fois le nombre de parcours et les options arrêtés.</p>
-    </section>
- 
-    <section class="info-sec">
-      <h2>Comment ça se passe</h2>
-      <p class="sub">Du premier échange à la conférence.</p>
+    <section class="info-sec"><h2>Comment ça se passe ?</h2>
       <div class="steps">
-        <div class="st"><span class="n">1</span><div><h3>Un échange</h3><p>Vous racontez votre conférence, votre public, ce que vous voulez qu'il en fasse. Nous vous disons ce qui est faisable et à quel prix.</p></div></div>
-        <div class="st"><span class="n">2</span><div><h3>Le contenu</h3><p>Vous fournissez vos 21 jours, ou nous les rédigeons à partir de vos supports. Vous validez avant intégration.</p></div></div>
-        <div class="st"><span class="n">3</span><div><h3>La mise en forme</h3><p>Nous intégrons votre identité visuelle et vous envoyons un lien de recette à tester sur votre propre téléphone.</p></div></div>
-        <div class="st"><span class="n">4</span><div><h3>La mise en ligne</h3><p>Le livret est publié à votre adresse. Vous recevez le QR code et la diapositive de clôture à ajouter à votre présentation.</p></div></div>
+        <div class="st"><span class="n">1</span><div><h3>Un échange</h3><p>Votre conférence, votre public et vos objectifs : nous définissons le projet et le devis.</p></div></div>
+        <div class="st"><span class="n">2</span><div><h3>Votre contenu</h3><p>Vous fournissez vos 21 jours, ou nous les concevons avec l'option rédaction complète. Vous validez les contenus.</p></div></div>
+        <div class="st"><span class="n">3</span><div><h3>Votre application</h3><p>Nous intégrons votre univers et vous transmettons une version à tester sur votre téléphone.</p></div></div>
+        <div class="st"><span class="n">4</span><div><h3>La mise en ligne</h3><p>Vous recevez votre lien et votre QR code pour prolonger votre prochaine conférence.</p></div></div>
       </div>
     </section>
- 
-    <section class="info-sec">
-      <h2>Questions fréquentes</h2>
-      <div class="faq">
-        <details><summary>Faut-il passer par l'App Store ou Google Play ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Non. Le livret est une application web : elle s'ouvre dans le navigateur et s'ajoute à l'écran d'accueil en trois gestes. Aucune validation de store, aucun délai, aucune commission.</p></div></details>
-        <details><summary>Que deviennent les données des participants ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Sans l'option compte participant, rien ne sort de leur téléphone : réponses et progression restent dans leur navigateur.</p><p>Avec l'option, les données sont hébergées en France et servent uniquement à retrouver la progression. Vous voyez le nombre d'inscrits, jamais le contenu de leurs réponses.</p></div></details>
-        <details><summary>Puis-je modifier le contenu après la mise en ligne ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Oui. Les corrections de texte sont comprises dans l'abonnement. Les ajouts plus larges — nouveaux jours, nouveau parcours — relèvent des options.</p></div></details>
-        <details><summary>Est-ce que ça fonctionne hors connexion ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Le livret s'ouvre depuis l'écran d'accueil comme une application. Une connexion est nécessaire au premier chargement de chaque jour.</p></div></details>
-        <details><summary>Combien de participants peut-il accueillir ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Il n'y a pas de limite pratique pour des conférences de quelques centaines à quelques milliers de personnes. Au-delà, nous en parlons en amont.</p></div></details>
-        <details><summary>Et si j'ai plusieurs conférences différentes ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Chaque conférence peut avoir son livret, ou devenir un parcours supplémentaire à l'intérieur du même livret. La seconde option est nettement moins coûteuse.</p></div></details>
-      </div>
-    </section>
- 
-    <div class="info-cta">
-      <h2>Parlons de votre conférence</h2>
-      <p>Dites-nous en deux lignes votre sujet et votre public. Nous vous répondons avec une proposition chiffrée.</p>
-      <a class="btn" href="mailto:acekom84@gmail.com?subject=Livret%20d%27apr%C3%A8s-conf%C3%A9rence%20-%20demande%20de%20devis">Écrire à AcéKom</a>
-    </div>
- 
+    <section class="info-sec"><h2>Questions fréquentes</h2><div class="faq">
+      <details><summary>Faut-il passer par un store ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Non. L'application web s'ouvre dans un navigateur et peut être ajoutée à l'écran d'accueil.</p></div></details>
+      <details><summary>Le compte et Brevo sont-ils des options ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Non. La création de compte, la connexion participant et l'intégration CRM Brevo sont incluses dans le socle de 1 490 € HT.</p><p>Cette démonstration reste accessible sans compte et sauvegarde vos réponses dans votre navigateur. Elle ne simule pas une connexion à votre futur CRM.</p></div></details>
+      <details><summary>La rédaction complète est-elle incluse ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>L'accompagnement à la construction et l'intégration de vos contenus sont inclus. La conception / rédaction complète coûte 450 € HT pour le premier parcours, puis 300 € HT par parcours supplémentaire, en plus des 450 € HT d'intégration de chacun.</p></div></details>
+      <details><summary>Et si j'ai plusieurs conférences ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Vous pouvez proposer plusieurs parcours de 21 jours. L'estimateur distingue leur intégration et leur conception éditoriale.</p></div></details>
+      <details><summary>Puis-je faire évoluer mon application ?<span class="chevron">&#9660;</span></summary><div class="fbody"><p>Oui. Parcours, contenus et boutons supplémentaires peuvent faire l'objet d'un nouveau devis. Les modalités de maintenance sont précisées ensemble.</p></div></details>
+    </div></section>
+    <div class="info-cta"><h2>Votre conférence dure une heure. Son impact peut durer beaucoup plus longtemps.</h2><p>Un parcours. Votre méthode. Votre univers.<br>Application personnalisée à partir de 1 490 € HT.</p><a class="btn" href="mailto:acekom84@gmail.com?subject=Mon%20application%2021%20jours">Écrire à AcéKom</a></div>
   </div>
-</div>  
+</div>
 
 <!-- Modale : image du jour -->
 <div class="slide-modal" id="slideModal">
@@ -1187,27 +1193,109 @@
     location.reload();
   };
 
-  /* ---------- Page « Plus d'infos » ---------- */
-  var infoPage = document.getElementById("infoPage");
+  /* ---------- Informations et estimation ---------- */
+  var infoPage = document.getElementById('infoPage');
+  var infoReturnFocus = null;
+  var infoBackground = [];
   function showInfo(push){
-    infoPage.classList.add("show");
-    document.body.classList.add("locked");
-    infoPage.scrollTop = 0;
-    if(push !== false && location.hash !== "#infos"){
-      history.pushState(null, "", "#infos");
+    var wasOpen = infoPage.classList.contains('show');
+    if(!wasOpen){
+      infoReturnFocus = document.activeElement;
+      infoBackground = Array.from(document.body.children).filter(function(el){ return el !== infoPage && el.tagName !== 'SCRIPT'; }).map(function(el){
+        var previous = el.inert; el.inert = true; return {el:el, previous:previous};
+      });
     }
+    infoPage.classList.add('show');
+    document.body.classList.add('locked');
+    if(!wasOpen){ infoPage.scrollTop = 0; document.getElementById('infoBack').focus({preventScroll:true}); }
+    if(push !== false && location.hash !== '#infos'){ history.pushState(null, '', '#infos'); }
   }
   function hideInfo(){
-    infoPage.classList.remove("show");
-    document.body.classList.remove("locked");
-    if(location.hash === "#infos"){ history.pushState(null, "", location.pathname + location.search); }
+    var wasOpen = infoPage.classList.contains('show');
+    infoPage.classList.remove('show');
+    document.body.classList.remove('locked');
+    infoBackground.forEach(function(item){ item.el.inert = item.previous; });
+    infoBackground = [];
+    if(location.hash === '#infos' || location.hash === '#estimation'){ history.replaceState(null, '', location.pathname + location.search); }
+    if(wasOpen && infoReturnFocus){ infoReturnFocus.focus({preventScroll:true}); }
   }
-  document.getElementById("infoPill").onclick = function(){ showInfo(); };
-  document.getElementById("infoBack").onclick = hideInfo;
-  window.addEventListener("hashchange", function(){
-    if(location.hash === "#infos"){ showInfo(false); } else { hideInfo(); }
+  function goToEstimate(){
+    var target = document.getElementById('estimation');
+    target.focus({preventScroll:true});
+    target.scrollIntoView({block:'start'});
+  }
+  function syncInfoRoute(){
+    if(location.hash === '#infos' || location.hash === '#estimation'){
+      showInfo(false);
+      if(location.hash === '#estimation'){ goToEstimate(); }
+    } else { hideInfo(); }
+  }
+  document.getElementById('infoPill').onclick = function(){ showInfo(); };
+  document.getElementById('infoBack').onclick = hideInfo;
+  document.getElementById('estimateLink').onclick = function(e){
+    e.preventDefault();
+    if(location.hash !== '#estimation'){ history.pushState(null, '', '#estimation'); }
+    goToEstimate();
+  };
+  window.addEventListener('hashchange', syncInfoRoute);
+  window.addEventListener('popstate', syncInfoRoute);
+  infoPage.addEventListener('keydown', function(e){
+    if(e.key !== 'Tab'){ return; }
+    var items = Array.from(infoPage.querySelectorAll('button,a[href],input:not(:disabled),select,summary,[tabindex="0"]')).filter(function(el){ return el.getClientRects().length; });
+    var first = items[0], last = items[items.length - 1];
+    if(e.shiftKey && (document.activeElement === first || document.activeElement === infoPage || document.activeElement === document.getElementById('estimation'))){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
   });
-  if(location.hash === "#infos"){ showInfo(false); }
+  syncInfoRoute();
+
+  function estimatePrice(options){
+    var lines = [{label:'Application personnalisée — 1 parcours de 21 jours inclus', amount:1490}];
+    function add(label, amount){ if(amount){ lines.push({label:label, amount:amount}); } }
+    add(options.extraPaths + ' parcours supplémentaire(s) : intégration', options.extraPaths * 450);
+    add('Conception / rédaction complète du premier parcours', options.firstWriting ? 450 : 0);
+    add(options.extraWriting + ' parcours supplémentaire(s) : conception complète', options.extraWriting * 300);
+    add(options.slides === 150 ? 'Intégration de slides fournies' : 'Adaptation / création de slides', options.slides);
+    if(options.book && options.review){ add('Forfait Acheter mon livre + Avis Google',80); }
+    else { add('Bouton Acheter mon livre',options.book ? 50 : 0); add('Bouton Avis Google',options.review ? 50 : 0); }
+    add(options.extraCta + ' CTA supplémentaire(s)',options.extraCta * 50);
+    return {lines:lines,total:lines.reduce(function(sum,line){ return sum + line.amount; },0)};
+  }
+  function euro(value){ return value.toLocaleString('fr-FR') + ' € HT'; }
+  function boundedCount(id, max){
+    var input = document.getElementById(id);
+    var value = Number(input.value);
+    return Number.isFinite(value) ? Math.min(max, Math.max(0, Math.floor(value))) : 0;
+  }
+  function updateEstimate(){
+    var extraPaths = boundedCount('extraPaths',100);
+    var writing = document.getElementById('extraWriting');
+    writing.max = String(extraPaths);
+    writing.disabled = extraPaths === 0;
+    var extraWriting = boundedCount('extraWriting',extraPaths);
+    if(Number(writing.value) !== extraWriting){ writing.value = extraWriting; }
+    document.getElementById('writingHint').textContent = extraPaths ? 'Choisissez de 0 à ' + extraPaths + ' parcours supplémentaire(s) à concevoir.' : 'Ajoutez un parcours supplémentaire pour sélectionner sa conception complète.';
+    var result = estimatePrice({extraPaths:extraPaths, extraWriting:extraWriting,
+      firstWriting:document.getElementById('firstWriting').checked,
+      slides:Number(document.getElementById('slidesOption').value),
+      book:document.getElementById('bookOption').checked,
+      review:document.getElementById('reviewOption').checked,
+      extraCta:boundedCount('extraCta',100)});
+    document.getElementById('estimateTotal').textContent = euro(result.total);
+    var list = document.getElementById('estimateDetails');
+    list.replaceChildren();
+    result.lines.forEach(function(line){ var li = document.createElement('li'); li.textContent = line.label + ' : ' + euro(line.amount); list.appendChild(li); });
+    var body = 'Bonjour AcéKom,\n\nJe souhaite échanger sur mon application 21 jours.\n\n' + result.lines.map(function(line){ return '- ' + line.label + ' : ' + euro(line.amount); }).join('\n') + '\n\nTotal estimatif de création : ' + euro(result.total) + '\nCompte participant, connexion, CRM Brevo, couleurs, logo, site et réseaux sociaux inclus.\nHébergement et maintenance à préciser au devis.\n\nMa conférence et mon public :\n\n';
+    document.getElementById('estimateContact').href = 'mailto:acekom84@gmail.com?subject=' + encodeURIComponent('Estimation de mon application 21 jours') + '&body=' + encodeURIComponent(body);
+  }
+  var estimateForm = document.getElementById('estimateForm');
+  estimateForm.addEventListener('submit',function(e){ e.preventDefault(); });
+  estimateForm.addEventListener('input',updateEstimate);
+  estimateForm.addEventListener('change',function(){
+    ['extraPaths','extraCta'].forEach(function(id){ document.getElementById(id).value = boundedCount(id,100); });
+    document.getElementById('extraWriting').value = boundedCount('extraWriting',boundedCount('extraPaths',100));
+    updateEstimate();
+  });
+  updateEstimate();
 
   /* ---------- Inscription ---------- */
   var signupForm = document.getElementById("signupForm");
